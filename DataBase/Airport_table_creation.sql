@@ -13,7 +13,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 DROP SCHEMA IF EXISTS `airport` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema airport
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `airport` DEFAULT CHARACTER SET utf8 ;
 USE `airport` ;
@@ -69,17 +69,17 @@ CREATE TABLE IF NOT EXISTS `airport`.`Documents` (
   INDEX `fk_Documents_Countries1_idx` (`country_code` ASC) VISIBLE,
   CONSTRAINT `fk_Documents_Passenger1`
     FOREIGN KEY (`passenger_id`)
-    REFERENCES `mydb`.`Passengers` (`passenger_id`)
+    REFERENCES `airport`.`Passengers` (`passenger_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Documents_DocumentType1`
     FOREIGN KEY (`document_type_id`)
-    REFERENCES `mydb`.`DocumentTypes` (`document_type_id`)
+    REFERENCES `airport`.`DocumentTypes` (`document_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Documents_Countries1`
     FOREIGN KEY (`country_code`)
-    REFERENCES `mydb`.`Countries` (`country_code`)
+    REFERENCES `airport`.`Countries` (`country_code`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -97,7 +97,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`AirplaneCompanies`
+-- Table `airport`.`AirplaneCompanies`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `airport`.`AirplaneCompanies` (
   `company_iata` CHAR(2) NOT NULL,
@@ -118,12 +118,12 @@ CREATE TABLE IF NOT EXISTS `airport`.`Airplanes` (
   INDEX `fk_Airplanes_AirplaneCompanies1_idx` (`company_iata` ASC) VISIBLE,
   CONSTRAINT `fk_Airplanes_AirplaneTypes1`
     FOREIGN KEY (`airplane_type_id`)
-    REFERENCES `mydb`.`AirplaneTypes` (`ariplane_type_id`)
+    REFERENCES `airport`.`AirplaneTypes` (`ariplane_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Airplanes_AirplaneCompanies1`
     FOREIGN KEY (`company_iata`)
-    REFERENCES `mydb`.`AirplaneCompanies` (`company_iata`)
+    REFERENCES `airport`.`AirplaneCompanies` (`company_iata`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`floors` (
   INDEX `fk_floors_AirplaneTypes1_idx` (`airplane_type_id` ASC) VISIBLE,
   CONSTRAINT `fk_floors_AirplaneTypes1`
     FOREIGN KEY (`airplane_type_id`)
-    REFERENCES `mydb`.`AirplaneTypes` (`ariplane_type_id`)
+    REFERENCES `airport`.`AirplaneTypes` (`ariplane_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -171,12 +171,12 @@ CREATE TABLE IF NOT EXISTS `airport`.`Seats` (
   INDEX `fk_Seats_SeatsClass1_idx` (`seat_class_id` ASC) VISIBLE,
   CONSTRAINT `fk_Seats_Airplanes1`
     FOREIGN KEY (`airplane_registration_number`)
-    REFERENCES `mydb`.`Airplanes` (`airplane_registration_number`)
+    REFERENCES `airport`.`Airplanes` (`airplane_registration_number`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Seats_SeatsClass1`
     FOREIGN KEY (`seat_class_id`)
-    REFERENCES `mydb`.`SeatsClass` (`seat_class_id`)
+    REFERENCES `airport`.`SeatsClass` (`seat_class_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`Airports` (
   INDEX `fk_Airports_Countries1_idx` (`country_code` ASC) VISIBLE,
   CONSTRAINT `fk_Airports_Countries1`
     FOREIGN KEY (`country_code`)
-    REFERENCES `mydb`.`Countries` (`country_code`)
+    REFERENCES `airport`.`Countries` (`country_code`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -211,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`Terminals` (
   INDEX `fk_table1_Airports1_idx` (`airport_iata` ASC) VISIBLE,
   CONSTRAINT `fk_table1_Airports1`
     FOREIGN KEY (`airport_iata`)
-    REFERENCES `mydb`.`Airports` (`airport_iata`)
+    REFERENCES `airport`.`Airports` (`airport_iata`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -228,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`Gates` (
   INDEX `fk_Gates_table11_idx` (`terminal_id` ASC) VISIBLE,
   CONSTRAINT `fk_Gates_table11`
     FOREIGN KEY (`terminal_id`)
-    REFERENCES `mydb`.`Terminals` (`terminal_id`)
+    REFERENCES `airport`.`Terminals` (`terminal_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -253,22 +253,22 @@ CREATE TABLE IF NOT EXISTS `airport`.`Flights` (
   INDEX `fk_Flights_Gates1_idx` (`gate_id` ASC) VISIBLE,
   CONSTRAINT `fk_Flights_Airplanes1`
     FOREIGN KEY (`airplane_registration_number`)
-    REFERENCES `mydb`.`Airplanes` (`airplane_registration_number`)
+    REFERENCES `airport`.`Airplanes` (`airplane_registration_number`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Flights_Airports1`
     FOREIGN KEY (`departure_airport`)
-    REFERENCES `mydb`.`Airports` (`airport_iata`)
+    REFERENCES `airport`.`Airports` (`airport_iata`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Flights_Airports2`
     FOREIGN KEY (`destination_airport`)
-    REFERENCES `mydb`.`Airports` (`airport_iata`)
+    REFERENCES `airport`.`Airports` (`airport_iata`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Flights_Gates1`
     FOREIGN KEY (`gate_id`)
-    REFERENCES `mydb`.`Gates` (`gate_id`)
+    REFERENCES `airport`.`Gates` (`gate_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -296,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`Employees` (
   INDEX `fk_Employee_PositionType1_idx` (`position_id` ASC) VISIBLE,
   CONSTRAINT `fk_Employee_PositionType1`
     FOREIGN KEY (`position_id`)
-    REFERENCES `mydb`.`PositionTypes` (`position_id`)
+    REFERENCES `airport`.`PositionTypes` (`position_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -318,22 +318,22 @@ CREATE TABLE IF NOT EXISTS `airport`.`CheckIns` (
   INDEX `fk_CheckIns_Employee1_idx` (`employee_id` ASC) VISIBLE,
   CONSTRAINT `fk_CheckIns_Passengers1`
     FOREIGN KEY (`passenger_id`)
-    REFERENCES `mydb`.`Passengers` (`passenger_id`)
+    REFERENCES `airport`.`Passengers` (`passenger_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_CheckIns_Flights1`
     FOREIGN KEY (`flight_id`)
-    REFERENCES `mydb`.`Flights` (`flight_id`)
+    REFERENCES `airport`.`Flights` (`flight_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_CheckIns_Seats1`
     FOREIGN KEY (`seat_id`)
-    REFERENCES `mydb`.`Seats` (`seat_id`)
+    REFERENCES `airport`.`Seats` (`seat_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_CheckIns_Employee1`
     FOREIGN KEY (`employee_id`)
-    REFERENCES `mydb`.`Employees` (`employee_id`)
+    REFERENCES `airport`.`Employees` (`employee_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -350,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`EmployeePasswords` (
   UNIQUE INDEX `employee_id_UNIQUE` (`employee_id` ASC) VISIBLE,
   CONSTRAINT `employee_id`
     FOREIGN KEY (`employee_id`)
-    REFERENCES `mydb`.`Employees` (`employee_id`)
+    REFERENCES `airport`.`Employees` (`employee_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -392,17 +392,17 @@ CREATE TABLE IF NOT EXISTS `airport`.`Baggages` (
   INDEX `fk_Baggages_CheckIns1_idx` (`checkin_id` ASC) VISIBLE,
   CONSTRAINT `fk_Baggages_BaggageStatus1`
     FOREIGN KEY (`baggage_status_id`)
-    REFERENCES `mydb`.`BaggageStatus` (`baggage_status_id`)
+    REFERENCES `airport`.`BaggageStatus` (`baggage_status_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Baggages_BaggageTypes1`
     FOREIGN KEY (`baggage_type_id`)
-    REFERENCES `mydb`.`BaggageTypes` (`baggage_type_id`)
+    REFERENCES `airport`.`BaggageTypes` (`baggage_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Baggages_CheckIns1`
     FOREIGN KEY (`checkin_id`)
-    REFERENCES `mydb`.`CheckIns` (`checkin_id`)
+    REFERENCES `airport`.`CheckIns` (`checkin_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -421,12 +421,12 @@ CREATE TABLE IF NOT EXISTS `airport`.`SeatsClassCount` (
   INDEX `fk_SeatsClassCount_SeatsClass1_idx` (`seat_class_id` ASC) VISIBLE,
   CONSTRAINT `fk_SeatsClassCount_SeatsClass1`
     FOREIGN KEY (`seat_class_id`)
-    REFERENCES `mydb`.`SeatsClass` (`seat_class_id`)
+    REFERENCES `airport`.`SeatsClass` (`seat_class_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SeatsClassCount_floors1`
     FOREIGN KEY (`floor_id`)
-    REFERENCES `mydb`.`floors` (`floor_id`)
+    REFERENCES `airport`.`floors` (`floor_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -445,12 +445,12 @@ CREATE TABLE IF NOT EXISTS `airport`.`BaggagePrices` (
   INDEX `fk_BaggagePrices_AirplaneCompanies1_idx` (`company_iata` ASC) VISIBLE,
   CONSTRAINT `fk_BaggagePrices_BaggageTypes1`
     FOREIGN KEY (`baggage_type_id`)
-    REFERENCES `mydb`.`BaggageTypes` (`baggage_type_id`)
+    REFERENCES `airport`.`BaggageTypes` (`baggage_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_BaggagePrices_AirplaneCompanies1`
     FOREIGN KEY (`company_iata`)
-    REFERENCES `mydb`.`AirplaneCompanies` (`company_iata`)
+    REFERENCES `airport`.`AirplaneCompanies` (`company_iata`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
