@@ -89,10 +89,10 @@ ENGINE = InnoDB;
 -- Table `airport`.`AirplaneTypes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `airport`.`AirplaneTypes` (
-  `ariplane_type_id` INT NOT NULL AUTO_INCREMENT,
+  `airplane_type_id` INT NOT NULL AUTO_INCREMENT,
   `model_type` VARCHAR(30) NOT NULL,
   `manufacture` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`ariplane_type_id`))
+  PRIMARY KEY (`airplane_type_id`))
 ENGINE = InnoDB;
 
 
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`Airplanes` (
   INDEX `fk_Airplanes_AirplaneCompanies1_idx` (`company_iata` ASC) VISIBLE,
   CONSTRAINT `fk_Airplanes_AirplaneTypes1`
     FOREIGN KEY (`airplane_type_id`)
-    REFERENCES `airport`.`AirplaneTypes` (`ariplane_type_id`)
+    REFERENCES `airport`.`AirplaneTypes` (`airplane_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Airplanes_AirplaneCompanies1`
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`floors` (
   INDEX `fk_floors_AirplaneTypes1_idx` (`airplane_type_id` ASC) VISIBLE,
   CONSTRAINT `fk_floors_AirplaneTypes1`
     FOREIGN KEY (`airplane_type_id`)
-    REFERENCES `airport`.`AirplaneTypes` (`ariplane_type_id`)
+    REFERENCES `airport`.`AirplaneTypes` (`airplane_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
