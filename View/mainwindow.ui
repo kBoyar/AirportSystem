@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>952</width>
+    <height>630</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>951</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="flights_tab">
+     <attribute name="title">
+      <string>Flights</string>
+     </attribute>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-10</y>
+        <width>951</width>
+        <height>441</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>480</y>
+        <width>101</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>GET FLIGHT</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>480</y>
+        <width>101</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EDIT</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>480</y>
+        <width>101</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>DROP FLIGHT</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>480</y>
+        <width>101</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>FINISH FLIGHT</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="seatmap_tab">
+     <attribute name="title">
+      <string>SeatMap</string>
+     </attribute>
+     <widget class="QTabWidget" name="tabWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>511</width>
+        <height>541</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="seatmap_floor1">
+       <attribute name="title">
+        <string>Floor1</string>
+       </attribute>
+       <widget class="QTableView" name="tableView_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>511</width>
+          <height>511</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="seatmap_floor2">
+       <attribute name="title">
+        <string>Floor2</string>
+       </attribute>
+       <widget class="QTableView" name="tableView_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>511</width>
+          <height>511</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QListView" name="listView">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>0</y>
+        <width>421</width>
+        <height>541</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>952</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionDataBase"/>
+    <addaction name="actionInfromation"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuEmployee">
+     <property name="title">
+      <string>Employee</string>
+     </property>
+     <addaction name="actionEdit_Employees"/>
+     <addaction name="actionEdit_Positions"/>
+    </widget>
+    <widget class="QMenu" name="menuAirplane">
+     <property name="title">
+      <string>Airplane</string>
+     </property>
+     <addaction name="actionAdd_Airplane_2"/>
+     <addaction name="actionEdit_Airplane"/>
+     <addaction name="separator"/>
+     <addaction name="actionSeat_Map"/>
+     <addaction name="actionSeat_Types"/>
+    </widget>
+    <widget class="QMenu" name="menuFlight">
+     <property name="title">
+      <string>Flight</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuBaggage">
+     <property name="title">
+      <string>Baggage</string>
+     </property>
+     <addaction name="actionEdit_Types"/>
+     <addaction name="actionEdit_Prices"/>
+    </widget>
+    <widget class="QMenu" name="menuAirports">
+     <property name="title">
+      <string>Airports</string>
+     </property>
+     <addaction name="actionAirports_2"/>
+     <addaction name="actionTerminals"/>
+     <addaction name="actionGates"/>
+    </widget>
+    <addaction name="menuEmployee"/>
+    <addaction name="menuFlight"/>
+    <addaction name="menuBaggage"/>
+    <addaction name="separator"/>
+    <addaction name="menuAirplane"/>
+    <addaction name="actionAirplane_Companies"/>
+    <addaction name="separator"/>
+    <addaction name="actionAdd_Country"/>
+    <addaction name="menuAirports"/>
+   </widget>
+   <widget class="QMenu" name="menuLogout">
+    <property name="title">
+     <string>Logout</string>
+    </property>
+   </widget>
+   <addaction name="menuLogout"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionDataBase">
+   <property name="text">
+    <string>DataBase</string>
+   </property>
+  </action>
+  <action name="actionAddFlight">
+   <property name="text">
+    <string>Add Flight</string>
+   </property>
+  </action>
+  <action name="actionEdit_Employee_Password">
+   <property name="text">
+    <string>Change Employee Password</string>
+   </property>
+  </action>
+  <action name="actionAdd_Employee_Positions">
+   <property name="text">
+    <string>Add EmployeePosition</string>
+   </property>
+  </action>
+  <action name="actionEdit_Employee">
+   <property name="text">
+    <string>Edit Employee</string>
+   </property>
+  </action>
+  <action name="actionAdd_Airplane_2">
+   <property name="text">
+    <string>Airplane</string>
+   </property>
+  </action>
+  <action name="actionEdit_Airplane">
+   <property name="text">
+    <string>Airplane Type</string>
+   </property>
+  </action>
+  <action name="actionAdd_Flight">
+   <property name="text">
+    <string>Add Flight</string>
+   </property>
+  </action>
+  <action name="actionEdit_Flight_2">
+   <property name="text">
+    <string>Edit Flight</string>
+   </property>
+  </action>
+  <action name="actionAdd_Employee">
+   <property name="text">
+    <string>Add Employee</string>
+   </property>
+  </action>
+  <action name="actionEdit_Employee_2">
+   <property name="text">
+    <string>Edit Employee</string>
+   </property>
+  </action>
+  <action name="actionInfromation">
+   <property name="text">
+    <string>Infromation</string>
+   </property>
+  </action>
+  <action name="actionSeat_Map">
+   <property name="text">
+    <string>Seat Map</string>
+   </property>
+  </action>
+  <action name="actionSeat_Types">
+   <property name="text">
+    <string>Seat Types</string>
+   </property>
+  </action>
+  <action name="actionEdit_Employees">
+   <property name="text">
+    <string>Edit Employees</string>
+   </property>
+  </action>
+  <action name="actionEdit_Positions">
+   <property name="text">
+    <string>Edit Positions</string>
+   </property>
+  </action>
+  <action name="actionEdit_Types">
+   <property name="text">
+    <string>Edit Types</string>
+   </property>
+  </action>
+  <action name="actionEdit_Prices">
+   <property name="text">
+    <string>Edit Prices</string>
+   </property>
+  </action>
+  <action name="actionAdd_Country">
+   <property name="text">
+    <string>Add Country</string>
+   </property>
+  </action>
+  <action name="actionAirports_2">
+   <property name="text">
+    <string>Airports</string>
+   </property>
+  </action>
+  <action name="actionTerminals">
+   <property name="text">
+    <string>Terminals</string>
+   </property>
+  </action>
+  <action name="actionGates">
+   <property name="text">
+    <string>Gates</string>
+   </property>
+  </action>
+  <action name="actionAirplane_Companies">
+   <property name="text">
+    <string>Airplane Companies</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Logout</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
