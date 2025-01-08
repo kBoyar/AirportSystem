@@ -162,9 +162,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `airport`.`Seats` (
   `seat_id` INT NOT NULL AUTO_INCREMENT,
   `airplane_registration_number` VARCHAR(20) NOT NULL,
-  `row` INT NOT NULL,
-  `column` VARCHAR(1) NOT NULL,
-  `is_avaivable` TINYINT NULL DEFAULT 1,
+  `seat_row` INT NOT NULL,
+  `seat_column` VARCHAR(1) NOT NULL,
+  `is_available` TINYINT NULL DEFAULT 1,
   `seat_class_id` INT NOT NULL,
   PRIMARY KEY (`seat_id`),
   INDEX `fk_Seats_Airplanes1_idx` (`airplane_registration_number` ASC) VISIBLE,
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `airport`.`Flights` (
   `flight_id` INT NOT NULL AUTO_INCREMENT,
   `flight_number` VARCHAR(20) NOT NULL,
   `departure_time` DATETIME NOT NULL,
-  `arivival_time` DATETIME NOT NULL,
+  `arrival_time` DATETIME NOT NULL,
   `airplane_registration_number` VARCHAR(20) NOT NULL,
   `departure_airport` CHAR(3) NOT NULL,
   `destination_airport` CHAR(3) NOT NULL,
@@ -306,7 +306,7 @@ ENGINE = InnoDB;
 -- Table `airport`.`CheckIns`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `airport`.`CheckIns` (
-  `checkin_id` INT NOT NULL,
+  `checkin_id` INT NOT NULL auto_increment,
   `passenger_id` INT NOT NULL,
   `flight_id` INT NOT NULL,
   `seat_id` INT NULL,
