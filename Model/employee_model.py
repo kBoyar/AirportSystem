@@ -30,8 +30,21 @@ class EmployeeModel:
             query = "UPDATE password SET password=%s WHERE employee_id = %s"
             cursor.execute(query, (hashed_password, selected))
         else:
-            query = "UPDATE employee SET %s=%s WHERE employee_id = %s"
+            query = "UPDATE employees SET %s=%s WHERE employee_id = %s"
         cursor.execute(query, (prop, value, selected))
+
+    def validate_credentials(self, employee_id, password):
+        cursor = self.db_connection.cursor(dictionary=True)
+        query = ("SELECT EmployeePasswords.password, position_types.position_type FROM employees "
+                 "JOIN EmployeePasswords ON employees.id = EmployeePasswords.employee_id"
+                 "JOIN PositionTypes ON employees.position_id = PositionTypes.position_id"
+                 "WHERE employees.employee_id = %s")
+        cursor.execute(query, (employee_id,))
+        employee = cursor.fetchone()
+        if employee:
+            if hash_password_sha256(password) == employee["password"]:
+                return employee["position_type"]
+        return None
 
 
 def hash_password_sha256(password: str) -> str:
