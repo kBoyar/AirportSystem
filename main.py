@@ -1,16 +1,15 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from Utils.db_connection import create_db_connection
+from ViewModel.viewmodel import ViewModel
+from model_manager import ModelManager
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    db_connection = create_db_connection()
+    model_manager = ModelManager(db_connection)
+    view_model = ViewModel(model_manager)
+    db_connection.close()
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    main()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
